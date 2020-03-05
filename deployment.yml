@@ -14,7 +14,7 @@ items:
     spec:
       ports:
         - name: "3128"
-          port: 3128
+          port: 80
           targetPort: 3128
       selector:
         io.kompose.service: proxytunnel
@@ -34,6 +34,7 @@ items:
       namespace: proxytunnel
     spec:
       replicas: 1
+      revisionHistoryLimit: 0
       strategy: {}
       template:
         metadata:
@@ -66,10 +67,10 @@ items:
                       name: auth
                       key: "PROXY_USERNAME"
                 - name: PROXY_PASSWORD
-                    valueFrom:
-                      secretKeyRef:
-                        name: auth
-                        key: "PROXY_PASSWORD"
+                  valueFrom:
+                    secretKeyRef:
+                      name: auth
+                      key: "PROXY_PASSWORD"
               resources: {}
     status: {}
 kind: List
