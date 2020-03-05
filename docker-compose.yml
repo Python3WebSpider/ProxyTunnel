@@ -11,3 +11,6 @@ services:
       - '3128:3128'
     environment:
       PEERS_CONF: "# test"
+      PROXY_AUTH: "false"
+      PROXY_USERNAME: germey
+      PROXY_PASSWORD: germey

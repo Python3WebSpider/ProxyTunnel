@@ -55,6 +55,21 @@ items:
                     configMapKeyRef:
                       name: squid
                       key: "peers.conf"
+                - name: PROXY_AUTH
+                  valueFrom:
+                    secretKeyRef:
+                      name: auth
+                      key: "PROXY_AUTH"
+                - name: PROXY_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: auth
+                      key: "PROXY_USERNAME"
+                - name: PROXY_PASSWORD
+                    valueFrom:
+                      secretKeyRef:
+                        name: auth
+                        key: "PROXY_PASSWORD"
               resources: {}
     status: {}
 kind: List
