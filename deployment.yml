@@ -8,8 +8,8 @@ items:
         kompose.version: 1.20.0 ()
       creationTimestamp: null
       labels:
-        io.kompose.service: blog
-      name: blog
+        io.kompose.service: proxytunnel
+      name: proxytunnel
       namespace: proxytunnel
     spec:
       ports:
@@ -17,7 +17,8 @@ items:
           port: 3128
           targetPort: 3128
       selector:
-        io.kompose.service: blog
+        io.kompose.service: proxytunnel
+      type: LoadBalancer
     status:
       loadBalancer: {}
   - apiVersion: extensions/v1beta1
@@ -28,8 +29,8 @@ items:
         kompose.version: 1.20.0 ()
       creationTimestamp: null
       labels:
-        io.kompose.service: blog
-      name: blog
+        io.kompose.service: proxytunnel
+      name: proxytunnel
       namespace: proxytunnel
     spec:
       replicas: 1
@@ -41,26 +42,20 @@ items:
             kompose.version: 1.20.0 ()
           creationTimestamp: null
           labels:
-            io.kompose.service: blog
+            io.kompose.service: proxytunnel
         spec:
           containers:
             - image: germey/proxytunnel
-              name: blog
+              name: proxytunnel
               ports:
+                - containerPort: 3128
               env:
                 - name: PEERS_CONF
                   valueFrom:
                     configMapKeyRef:
                       name: squid
                       key: "peers.conf"
-                - name: SQUID_CONF
-                  valueFrom:
-                    configMapKeyRef:
-                      name: squid
-                      key: "squid.conf"
-                - containerPort: 3128
               resources: {}
-          restartPolicy: Always
     status: {}
 kind: List
 metadata: {}

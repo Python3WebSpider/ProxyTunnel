@@ -1,1 +1,1 @@
-kubectl create configmap squid --from-file=./peers.conf --from-file=./squid.conf -n proxytunnel
+kubectl create configmap squid --from-file=./peers.conf -n proxytunnel

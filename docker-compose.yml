@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  blog:
+  proxytunnel:
     image: germey/proxytunnel
     build:
       context: .
@@ -9,3 +9,5 @@ services:
     restart: always
     ports:
       - '3128:3128'
+    environment:
+      PEERS_CONF: "# test"
