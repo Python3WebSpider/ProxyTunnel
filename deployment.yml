@@ -13,8 +13,8 @@ items:
       namespace: proxytunnel
     spec:
       ports:
-        - name: "80"
-          port: 80
+        - name: "3128"
+          port: 3128
           targetPort: 3128
       selector:
         io.kompose.service: proxytunnel
