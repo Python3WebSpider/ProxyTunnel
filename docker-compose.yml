@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  blog:
+    image: germey/proxytunnel
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '3128:3128'
